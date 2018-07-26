@@ -1,0 +1,10 @@
+export const USER_TYPE = {1:'商场', 2:'商户'}
+export const USER_STATUS = {0:'正常', 1:'冻结'}
+export const SHOP_STATUS = {0:'开业', 1:'装修', 2:'撤店'}
+export const SHOP_STAFF_SEX = {0:'未知', 1:'男', 2:'女'}
+export const SHOP_STAFF_STATUS = {0:'在职', 1:'离职'}
+export const NOTIFY_CATEGORY_STATUS = {0:'正常', 1:'冻结', 2:'删除'}
+export const NOTIFY_STATUS = {0:'正常', 1:'关闭'}
+export const DEPARTMENT_PHONE_STATUS = {0:'显示', 1:'隐藏'}
+export const COST_DETAIL_SETTLE = {0:'否', 1:'是'}
+export const COST_OVERVIEW_STATUS = {1: '未缴费', 2:'部分缴费', 3:'已缴费'}

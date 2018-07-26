@@ -1,0 +1,39 @@
+/**
+ * Element标准色
+ */
+$color-main = #409EFF
+$color-success = #67c23a
+$color-warning = #e6a23c
+$color-danger = #f56c6c
+$color-info = #909399
+
+$color-text-main = #303133
+$color-text-normal = #606266
+$color-text-secondary = #909399
+$color-text-placeholder = #c0c4cc
+
+$color-border-1 = #DCDFE6
+$color-border-2 = #e4e7ed
+$color-border-3 = #ebeef5
+$color-border-4 = #f2f6fc
+
+/**
+ * 函数
+ */
+transition-ease(time=.2s){
+  transition time all ease-in-out
+}
+
+hover-highlight(withBorder=false){
+  cursor pointer
+  color $color-text-normal
+  if withBorder{
+    border-color $color-text-normal
+  }
+  &:hover{
+    color $color-main
+    if withBorder{
+      border-color $color-main
+    }
+  }
+}
