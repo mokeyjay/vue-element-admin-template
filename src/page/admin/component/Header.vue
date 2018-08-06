@@ -14,7 +14,7 @@
     </div>
     <div class="right">
       <i class="el-icon-rank" @click="fullscreenToggle" title="全屏"></i>
-      <el-dropdown class="faceAndMenu">
+      <el-dropdown class="faceAndMenu" @command="handleCommand">
         <span class="el-dropdown-link">
           <div class="face">
             <i class="iconfont icon-user"></i>
@@ -22,8 +22,8 @@
           <span class="username">{{$store.state.user.nickname}}</span>
         </span>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>个人中心</el-dropdown-item>
-          <el-dropdown-item @click="logout">退出登陆</el-dropdown-item>
+          <el-dropdown-item command="center">个人中心</el-dropdown-item>
+          <el-dropdown-item command="logout">退出登陆</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -41,11 +41,19 @@
       breadClick(url){
         if(url != '') this.$store.commit('layout/clickTab', url)
       },
-      logout(){
-        this.$api.post('auth/logout')
-          .then(()=>{
-            this.$router.push('/')
-          })
+      handleCommand(command){
+        switch (command) {
+          case 'logout':
+            this.$api.post('auth/logout')
+              .then(()=>{
+                this.$router.push('/')
+              })
+            break
+
+          case 'center':
+            // ...
+            break
+        }
       },
     },
     computed:{
