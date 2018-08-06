@@ -46,7 +46,7 @@
           case 'logout':
             this.$api.post('auth/logout')
               .then(()=>{
-                this.$router.push('/')
+                this.$router.replace('/login')
               })
             break
 
