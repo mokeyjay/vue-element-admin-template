@@ -7,7 +7,7 @@ export default new Vuex.Store({
       id: 0,
       username: 'admin',
       nickname: '管理员',
-      auth: [3], // 权限列表
+      auth: [1], // 权限列表
     },
   },
   mutations:{

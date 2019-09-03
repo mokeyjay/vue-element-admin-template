@@ -11,8 +11,9 @@ if(process.env.NODE_ENV === 'production'){
   Vue.prototype.$baseUrl = 'https://www.xxxx.com/'
 } else {
   Vue.prototype.$baseUrl = 'http://127.0.0.1:8010/'
-  Vue.config.devtools = true // 允许浏览器扩展Vue DevTools调试
+  Vue.config.devtools = true // 允许浏览器扩展 Vue DevTools 调试
 }
+// 兼容部分老后端框架及非独立域名的情况
 Vue.prototype.$phpUrl = Vue.prototype.$baseUrl + 'api/public/' // 指向后端的公开目录
 Vue.prototype.$apiUrl = Vue.prototype.$phpUrl + 'index.php/market/' // api接口前缀
 

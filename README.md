@@ -1,7 +1,7 @@
 # 基于Vue+Element的简单管理后台模板
 
 ## 简介
-这是一款基于 `Vue / Vuex / VueRouter / axios / ElementUI` 等等而成的简单管理后台模板  
+这是一款基于 `Vue / ElementUI / Vuex / VueRouter / axios` 等等而成的简单管理后台模板  
 象征着本萌新终于跨入前端界了🎉  
 得益于webpack的`externals`特性，大部分资源都采用CDN分发，使得构建完毕后仅占不到70K  
 萌新的第一个作品，代码稀烂，请轻喷。如能提出建设性建议则十分感谢  

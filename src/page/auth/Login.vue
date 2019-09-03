@@ -9,15 +9,15 @@
       </div>
       <el-input
         placeholder="请输入用户名"
-        v-model="username">
-        <i slot="suffix" class="iconfont icon-user"></i>
+        v-model="username"
+        suffix-icon="el-icon-user">
       </el-input>
       <el-input
         placeholder="请输入密码"
         v-model="password"
         type="password"
-        @keyup.enter.native="login">
-        <i slot="suffix" class="iconfont icon-lock"></i>
+        @keyup.enter.native="login"
+        suffix-icon="el-icon-lock">
       </el-input>
       <el-button type="primary" @click="login" v-loading="loading">登陆</el-button>
     </el-card>

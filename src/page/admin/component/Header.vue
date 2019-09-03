@@ -1,23 +1,23 @@
 <template>
   <div id="header">
     <div class="left">
-    <i :class="['iconfont', 'icon-menu', {collapse: menuCollapse}]"
-       @click="$store.commit('layout/menuCollapseToggle')" title="收起/展开导航菜单"></i>
-    <el-breadcrumb separator="/">
-      <el-breadcrumb-item v-for="b in breadcrumb"
-                          :key="b.url"
-                          :to="b.url"
-                          @click.native="breadClick(b.url)">
-        {{b.title}}
-      </el-breadcrumb-item>
-    </el-breadcrumb>
+      <i :class="[menuCollapse?'el-icon-s-unfold':'el-icon-s-fold']"
+         @click="$store.commit('layout/menuCollapseToggle')" title="收起/展开导航菜单"></i>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item v-for="b in breadcrumb"
+                            :key="b.url"
+                            :to="b.url"
+                            @click.native="breadClick(b.url)">
+          {{b.title}}
+        </el-breadcrumb-item>
+      </el-breadcrumb>
     </div>
     <div class="right">
       <i class="el-icon-rank" @click="fullscreenToggle" title="全屏"></i>
       <el-dropdown class="faceAndMenu" @command="handleCommand">
         <span class="el-dropdown-link">
           <div class="face">
-            <i class="iconfont icon-user"></i>
+            <i class="el-icon-user"></i>
           </div>
           <span class="username">{{$store.state.user.nickname}}</span>
         </span>
@@ -86,6 +86,10 @@
     }
 
     .left {
+      i{
+        font-size 22px
+        cursor pointer
+      }
       .icon-menu{
         @extend #header .icon
         &.collapse{
@@ -126,7 +130,7 @@
             align-items center
             justify-content center
             i{
-              font-size 26px
+              font-size 22px
             }
           }
           .username{

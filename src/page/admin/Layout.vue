@@ -39,7 +39,7 @@
             if(menu.path == to.matched[0].path){
               indexPath += i
 
-              if(to.matched.length >= 2 && menu.children.length > 1){
+              if(to.matched.length >= 2 && menu.children.length >= 1){
                 let childrenPath = to.matched[1].path.split('/').pop()
                 menu.children.map((menu, i)=>{
                   if(menu.path == childrenPath){

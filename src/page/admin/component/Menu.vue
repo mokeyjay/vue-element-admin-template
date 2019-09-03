@@ -8,8 +8,8 @@
       <el-menu-item class="logo" index="0">
         <img :src="logo" alt="logo">
       </el-menu-item>
-      <template v-for="(m,i) in menu" v-if="i>0 && m.meta.show !== false && checkAuth(m.meta.auth)">
 
+      <template v-for="(m,i) in menu" v-if="i>0 && m.meta.show !== false && checkAuth(m.meta.auth)">
         <el-menu-item :index="i" v-if="m.meta.subMenu == false">
           <i :class="m.meta.icon"></i>
           <span slot="title">{{m.meta.title}}</span>
@@ -25,8 +25,8 @@
             {{sm.meta.title}}
           </el-menu-item>
         </el-submenu>
-
       </template>
+
     </el-menu>
   </div>
 </template>
@@ -81,7 +81,7 @@
         })
 
         this.$store.commit('layout/setMenuIndex', indexPath[indexPath.length-1])
-        this.$router.push(path)
+        this.$router.push(path).catch(()=>{})
       },
 
       checkAuth(auth){
@@ -102,7 +102,6 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    background-color: #495060;
     .logo{
       text-align: center;
       height: auto;
@@ -122,8 +121,8 @@
       }
 
       i{
-        font-size 24px;
-        margin-right 10px;
+        font-size 16px;
+        margin-right 5px;
       }
     }
   }

@@ -14,6 +14,7 @@ module.exports = (options = {}) => ({
     'axios': 'axios',
     'screenfull': 'screenfull',
     'downloadjs': 'download',
+    'vue-ueditor-wrap': 'VueUeditorWrap',
   },
   output: {
     path: resolve(__dirname, 'dist'),

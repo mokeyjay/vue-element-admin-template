@@ -15,15 +15,11 @@
           <el-col :span="2">
             <el-checkbox v-model="shopAll" border @change="shopAllChange">全部</el-checkbox>
           </el-col>
-          <el-col :span="1" style="text-align: center" v-if="!shopAll">或</el-col>
-          <el-col :span="21">
-            <ShopSelect v-model="form.shop_id" :multiple="true" v-if="!shopAll"></ShopSelect>
-          </el-col>
         </el-row>
       </el-form-item>
       <el-form-item label="显示时间">
         <el-date-picker v-model="form.showtime" type="datetimerange" unlink-panels
-                        range-separator="至" start-placeholder="" end-placeholder="有效期"
+                        range-separator="至" start-placeholder="开始" end-placeholder="结束"
                         value-format="yyyy-MM-dd HH:mm:ss">
         </el-date-picker>
       </el-form-item>
@@ -37,7 +33,7 @@
         <el-checkbox v-model="form.can_upload" :true-label="1" :false-label="0">允许上传</el-checkbox>
       </el-form-item>
       <el-form-item label="内容">
-        <UEditor @ready="ueditorReady"></UEditor>
+        <vue-ueditor-wrap @ready="ueditorReady" v-model="form.content"></vue-ueditor-wrap>
       </el-form-item>
       <el-form-item label="状态">
         <ObjectSelect v-model="form.status" placeholder="状态" :object="notifyStatus"></ObjectSelect>
@@ -56,11 +52,9 @@
   import { NOTIFY_STATUS } from "@/utils/objectList";
   import ObjectSelect from 'page/admin/component/ObjectSelect'
   import CategorySelect from 'page/admin/notify/component/CategorySelect'
-  import ShopSelect from 'page/admin/component/ShopSelect'
-  import UEditor from 'page/admin/component/UEditor'
 
   export default {
-    components: { ObjectSelect, CategorySelect, ShopSelect, UEditor },
+    components: { ObjectSelect, CategorySelect, VueUeditorWrap },
     filters:{ notifyStatus },
     props:{
       id: Number,
@@ -107,22 +101,14 @@
             need_confirm: 0,
             need_join: 0,
             can_upload: 0,
-            content: '',
+            content: '我是内容详情',
             file: '',
             status:'0',
           }
           return
         }
 
-        this.loading = true
-        this.$api.post('notify/get', { id })
-          .then(data => {
-            this.form = data
-            if(this.ueditor) this.ueditor.setContent(this.form.content)
-          })
-          .finally(()=>{
-            this.loading = false
-          })
+        if(this.ueditor) this.ueditor.setContent('UEditor编辑器内容')
       },
       save(){
         if(this.loading) return
@@ -130,15 +116,8 @@
         this.form.content = this.ueditor.getContent()
 
         this.loading = true
-        this.$api.post('notify/save', this.form)
-          .then(()=>{
-            this.$emit('refresh')
-            this.visible = false
-            this.$emit('update:visible', this.visible) // 不知为何这里非得手动触发一下，否则无效
-          })
-          .finally(()=>{
-            this.loading = false
-          })
+        console.log('已保存')
+        this.loading = false
       }
     },
     watch:{
